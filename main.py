@@ -21,7 +21,7 @@ pygame.display.set_caption("Car Game Deluxe: The Last Race")
 screen.fill((49, 185, 52))
 
 # Icon
-ICON = pygame.image.load("sprites/icon.png")
+ICON = pygame.image.load("icon.png")
 pygame.display.set_icon(ICON)
 
 # Draw the road
@@ -39,6 +39,16 @@ pygame.draw.rect(screen, (255, 255, 255), (SCREEN_WIDTH/2 + ROAD_W/2 - ROADMARK_
 # Update changes
 pygame.display.update()
 
+# Load car player image
+car_player = pygame.image.load("player.png")
+car_player_loc = car_player.get_rect()
+car_player_loc.center = SCREEN_WIDTH/2.9 + ROAD_W/2, SCREEN_HEIGHT*0.9
+
+# Load bad car player image
+bad_car = pygame.image.load("bad.png")
+bad_car_loc = bad_car.get_rect()
+bad_car_loc.center = SCREEN_WIDTH/2.9 + ROAD_W/19, SCREEN_HEIGHT/6
+
 # Game loop
 running = True
 while running:
@@ -50,3 +60,11 @@ while running:
             if event.key == K_ESCAPE:
                 running = False
 
+    # Draw player
+    screen.blit(car_player, car_player_loc)
+
+    # Draw player
+    screen.blit(bad_car, bad_car_loc)
+
+    # Update the app
+    pygame.display.update()
